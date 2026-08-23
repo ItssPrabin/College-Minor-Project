@@ -1,2 +1,2 @@
-# Minor-Project-Remade
-This is the actual version of minor project
+### Resume Ranking System
+This is the Applicant Tracking System (ATS) with integrated NLP models for semantic matching.
