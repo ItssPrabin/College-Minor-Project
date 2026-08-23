@@ -1,0 +1,11 @@
+Rank,Resume ID,Category,SBERT Score,Word2Vec Score,Hybrid Score
+1,204,Cloud Solutions Architect,66.19%,93.87%,77.26%
+2,202,Cloud Solutions Architect,66.19%,93.87%,77.26%
+3,53,AI ML,65.18%,93.80%,76.63%
+4,525,Data Science,62.90%,92.81%,74.86%
+5,79,AI ML,63.42%,91.62%,74.70%
+6,68,AI ML,63.82%,90.97%,74.68%
+7,100,AI ML,61.39%,93.45%,74.21%
+8,90,AI ML,59.87%,95.55%,74.14%
+9,521,Data Science,62.78%,91.09%,74.10%
+10,552,Data Science,62.78%,91.09%,74.10%

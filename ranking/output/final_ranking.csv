@@ -1,0 +1,11 @@
+Rank,Resume ID,Category,SBERT,Word2Vec,Hybrid
+1,1202,Python Developer,73.88%,94.91%,82.29%
+2,1179,Python Developer,70.27%,94.05%,79.78%
+3,1208,Python Developer,67.88%,90.00%,76.73%
+4,1206,Python Developer,67.82%,89.13%,76.34%
+5,1195,Python Developer,66.03%,91.36%,76.16%
+6,1193,Python Developer,62.91%,93.84%,75.28%
+7,1120,Mobile App Developer,65.16%,90.16%,75.16%
+8,1438,Software Engineer,62.45%,93.27%,74.78%
+9,1173,Python Developer,65.13%,87.43%,74.05%
+10,733,Full Stack Developer,62.52%,91.29%,74.03%

@@ -1,0 +1,4 @@
+Model,Precision@10,NDCG@10
+SBERT,1.0,1.0
+Word2Vec,1.0,1.0
+Hybrid,1.0,1.0

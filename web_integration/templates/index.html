@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Ranking System</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Resume Ranking System</span>
+      </div>
+      <p class="header-tagline">by EEC Students</p>
+    </div>
+  </header>
+
+  <!-- ── Mode Tabs ────────────────────────────────────────────────────────── -->
+  <main class="container">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="stored" role="tab" aria-selected="true">
+        <span class="tab-icon">🗄</span>
+        <span class="tab-label">Find the best matches</span>
+        <span class="tab-desc">Just Upload you job requirements</span>
+      </button>
+      <button class="tab" data-tab="live" role="tab" aria-selected="false">
+        <span class="tab-icon">⚡</span>
+        <span class="tab-label">Live Ranking</span>
+        <span class="tab-desc">Upload JD and resumes, rank instantly</span>
+      </button>
+    </div>
+
+    <!-- ── Panel: Corpus Search ─────────────────────────────────────────── -->
+    <section id="panel-stored" class="panel active" role="tabpanel">
+      <div class="panel-card">
+        <h2 class="panel-title">Find the best matches</h2>
+        <p class="panel-desc">
+          Paste or upload a Job Description.
+        </p>
+
+        <form id="form-stored" novalidate>
+          <!-- JD Input -->
+          <fieldset class="fieldset">
+            <legend>Job Description</legend>
+            <div class="input-toggle">
+              <label class="toggle-opt active" data-for="jd-text-s">
+                <input type="radio" name="jd-type-s" value="text" checked /> Paste text
+              </label>
+              <label class="toggle-opt" data-for="jd-file-s">
+                <input type="radio" name="jd-type-s" value="file" /> Upload PDF
+              </label>
+            </div>
+            <textarea id="jd-text-s" name="jd_text" rows="9"
+              placeholder="Paste job description here …"></textarea>
+            <div id="jd-file-s-wrap" class="file-wrap hidden">
+              <label class="file-label" for="jd-file-s">
+                <span class="file-icon">📄</span>
+                <span class="file-hint">Click to choose JD PDF</span>
+              </label>
+              <input type="file" id="jd-file-s" name="jd_file" accept=".pdf" class="file-input" />
+              <span class="file-name" id="jd-file-s-name">No file chosen</span>
+            </div>
+          </fieldset>
+
+          <div class="row-options">
+            <label class="label-inline">
+              Top Matching Candidates:
+              <input type="number" name="top_k" value="10" min="1" max="50" class="num-input" />
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btn-stored">
+            <span class="btn-text">🔍 Rank Resumes</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Results -->
+      <div id="results-stored" class="results-section hidden"></div>
+    </section>
+
+    <!-- ── Panel: Live Ranking ──────────────────────────────────────────── -->
+    <section id="panel-live" class="panel hidden" role="tabpanel">
+      <div class="panel-card">
+        <h2 class="panel-title">Live Ranking</h2>
+        <p class="panel-desc">
+          Upload a Job Description and multiple Resume PDFs to rank them instantly.
+        </p>
+
+        <form id="form-live" novalidate>
+          <!-- JD Input -->
+          <fieldset class="fieldset">
+            <legend>Job Description</legend>
+            <div class="input-toggle">
+              <label class="toggle-opt active" data-for="jd-text-l">
+                <input type="radio" name="jd-type-l" value="text" checked /> Paste text
+              </label>
+              <label class="toggle-opt" data-for="jd-file-l">
+                <input type="radio" name="jd-type-l" value="file" /> Upload PDF
+              </label>
+            </div>
+            <textarea id="jd-text-l" name="jd_text" rows="7"
+              placeholder="Paste job description here …"></textarea>
+            <div id="jd-file-l-wrap" class="file-wrap hidden">
+              <label class="file-label" for="jd-file-l">
+                <span class="file-icon">📄</span>
+                <span class="file-hint">Click to choose JD PDF</span>
+              </label>
+              <input type="file" id="jd-file-l" name="jd_file" accept=".pdf" class="file-input" />
+              <span class="file-name" id="jd-file-l-name">No file chosen</span>
+            </div>
+          </fieldset>
+
+          <!-- Resume PDFs -->
+          <fieldset class="fieldset">
+            <legend>Resume PDFs <span class="badge">files</span></legend>
+            <label class="file-label multi" for="resume-files">
+              <span class="file-icon">📂</span>
+              <span class="file-hint">Click to choose resume PDFs</span>
+            </label>
+            <input type="file" id="resume-files" name="resume_files"
+                   accept=".pdf" multiple class="file-input" />
+            <div class="file-chips" id="resume-chips"></div>
+          </fieldset>
+
+          <div class="row-options">
+            <label class="label-inline">
+              Top Matching Candidates:
+              <input type="number" name="top_k" value="10" min="1" max="50" class="num-input" />
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btn-live">
+            <span class="btn-text">⚡ Extract &amp; Rank</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Results -->
+      <div id="results-live" class="results-section hidden"></div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Resume Ranking System · BERT + Word2Vec Hybrid · Everest Engineering College</p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
